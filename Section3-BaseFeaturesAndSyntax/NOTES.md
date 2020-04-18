@@ -69,6 +69,18 @@ function App() {
 }
 ```
 
+## ES6 Example
+
+```javascript
+import React from 'react';
+
+const app = () => {
+    return <p>app</p>
+};
+
+export default person;
+```
+
 # Understanding JSX
 
 Behind the scenes React uses the ```createElement``` method to render HTML

@@ -88,3 +88,127 @@ Behind the scenes React uses the ```createElement``` method to render HTML
 # JSX Restrictions
 
 Since the HTML written in a JSX file isn't really HTML, there are some restrictions.  For example, we have to use ```className``` instead of ```class``` in HTML because ```class``` will throw an error
+
+## Outputting dynamic content
+
+use ```{}``` within HTML/JSX
+
+```jsx
+const person = () => {
+    return <p>I'm a Person and I am {Math.floor(Math.random() * 30)} years old</p>
+};
+```
+
+## Working with props
+
+Attach properties to the component:
+
+```jsx
+<Person name="meme" age="10"/>
+```
+
+Within the component, using the *props* keyword
+
+```jsx
+const person = (props) => {
+    return <p>I'm {props.name} and I am {props.age} years old</p>
+};
+```
+
+### "children" prop
+
+To pass data down into a component that isn't an attribute or property like in this example:
+
+```jsx
+<Person name="Meme" age="133">I want to pass this down</Person>
+```
+
+use ```props.children``` within the component
+
+```jsx
+const person = (props) => {
+  return (
+    <div>
+      <p>I'm {props.name} and I am {props.age} years old</p>
+      <p>{props.children}</p>
+    </div>
+  )
+};
+```
+
+## Understanding & Using State
+
+*state* is used within a React class component
+
+```jsx
+class App extends React.Component {
+  state = {
+    persons: [
+      { name: 'Xavier', age: '33' },
+      { name: 'Meme', age: '133' },
+      { name: 'Dank', age: '12' }
+    ]
+  }
+
+  render() { 
+    return ();
+  }
+}
+```
+
+## Handling Events with Methods
+
+basic click event with method:
+
+```jsx
+class App extends React.Component {
+
+  switchNameHandler = () => {
+    console.log('was clicked');
+  };
+
+  render() { 
+    return (
+      <div className="App">
+        <button onClick={this.switchNameHandler}>Switch Name</button>
+      </div>
+    );
+  }
+}
+```
+
+list of events you can listen to:
+
+https://reactjs.org/docs/events.html#supported-events
+
+## Manipulating State
+
+First thing to point out is that you shouldn't try changing state directly like this:
+
+```jsx
+switchNameHandler = () => {
+  this.state.persons[0].name = "Meme Man";
+};
+```
+
+This won't update the state and give a warning in dev tools
+
+State should be handled using the ```setState()``` method
+
+```jsx
+switchNameHandler = () => {
+  // DONT DO THIS: this.state.persons[0].name = "Meme Man";
+  this.setState({
+    persons: [
+      { name: 'Meme Man', age: '33' },
+      { name: 'Meme', age: '133' },
+      { name: 'Dank', age: '50' }
+    ]
+  });
+};
+```
+
+## Using the useState() hook for state manipulation
+
+
+

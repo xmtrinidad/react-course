@@ -210,5 +210,46 @@ switchNameHandler = () => {
 
 ## Using the useState() hook for state manipulation
 
+## Passing Method References Between Components
 
+Methods can be passed down as props into components
 
+```jsx
+<Person
+  click={this.myClickEvent}>My hobbies: memeing on peeps
+</Person>
+```
+
+```jsx
+const person = (props) => {
+  return (
+    <div>
+      <p onClick={props.click}>Click me</p>
+    </div>
+  )
+};
+```
+
+## Adding Two Way Binding
+
+## Stylesheets and Inline Styles
+
+Using a ```.css``` file with a component doesn't scope the CSS file style to the component, so we have to rely on class names
+
+Another way to style components using inline styles is using a style object:
+
+```jsx
+const style = {
+  backgroundColor: 'white',
+  font: 'inherit',
+  border: '1px solid blue',
+  padding: '8px',
+  cursor: 'pointer'
+};
+```
+
+And then apply it to the element:
+
+```jsx
+<button style={style}>My Button</button>
+```
